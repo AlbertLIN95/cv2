@@ -15,7 +15,9 @@ int main(int argc, char** argv)
 	std::vector<cv::Point2f> outputSize{ cv::Point2f(0, 0),cv::Point2f(640, 0),cv::Point2f(0, 480),cv::Point2f(640, 480) };
 	
 	CrossTracker* tracker = new CrossTracker();
+	
 	tracker->setROIWidth(60);
+	
 	transform->setOutputCorners(outputSize);
 	
 	cv::VideoCapture cap(1);
@@ -57,5 +59,8 @@ int main(int argc, char** argv)
 		//use position mode to have a fast response at the first step, then use PID to 
 
 	}
+	delet transform;
+	delet tracker;
+	cap.release();
 	return 0;
 }
